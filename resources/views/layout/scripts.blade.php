@@ -33,5 +33,3 @@
 <!-- Funcionalidades Propias -->
 <script src="{{asset('js/funcionalidades.js')}}"></script>
 
-<!-- DROPZONE -->
-<script src="{{asset('plugins/dropzone/dist/dropzone.js')}}"></script>

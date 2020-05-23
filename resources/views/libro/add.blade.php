@@ -32,7 +32,7 @@
         <div class="card-body">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="nombre">Nombre</label>
                         <input value="{{ old('nombre') }}" type="text"  class="form-control" id="nombre" name="nombre" maxlength="100" minlength="3" required >
                         @if($errors->has('nombre'))
@@ -40,11 +40,18 @@
                         @endif
                     </div>
                     
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-sm-6 col-md-2">
                         <label for="">ISBN</label>
                         <input  value="{{ old('isbn') }}" type="text"  class="form-control" id="isbn" name="isbn" onKeyPress="return soloNumeros(event)"  onKeyPress="return soloNumeros(event)" maxlength="13" minlength="13" required>
                         @if($errors->has('isbn'))
                         <div class="text-danger font-italic">{{ $errors->first('isbn') }}</div>
+                        @endif
+                    </div>
+                    <div class="col-sm-6 col-md-2">
+                        <label for="">Stock</label>
+                        <input  value="{{ old('stock') }}" type="text"  class="form-control" id="stock" name="stock" onKeyPress="return soloNumeros(event)"  onKeyPress="return soloNumeros(event)" maxlength="2"  required>
+                        @if($errors->has('stock'))
+                        <div class="text-danger font-italic">{{ $errors->first('stock') }}</div>
                         @endif
                     </div>
                     <div class="col-sm-6 col-md-2">

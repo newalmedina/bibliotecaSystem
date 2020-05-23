@@ -15,6 +15,11 @@
   </section>
   
   <section class="content">
+
+    <script>
+
+      
+    </script>
     <div class="row">
   
       <div class="col-md-3 col-sm-6 col-xs-6">
@@ -23,11 +28,11 @@
   
           <div class="inner text-center">
   
-            <h3>7</h3>
+          <h3>{{count($clientes)}}</h3>
   
             <p>Miembros</p>
             <hr>
-            <a href="index.php?directorio=venta&pagina=index.php" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
+            <a href="{{ route('cliente.index')}}" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
           </div>
         </div>
       </div>
@@ -37,11 +42,11 @@
   
           <div class="inner text-center">
   
-            <h3>6</h3>
+            <h3>{{count($libros)}}</h3>
   
             <p>Libros</p>
             <hr>
-            <a href="index.php?directorio=categoria&pagina=index.php" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
+            <a href="{{ route('libro.index')}}" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
           </div>
         </div>
       </div>
@@ -51,11 +56,11 @@
   
           <div class="inner text-center text-white ">
   
-            <h3>5</h3>
+            <h3>{{count($editoriales)}}</h3>
   
             <p>Editoriales</p>
             <hr>
-            <a href="index.php?directorio=cliente&pagina=index.php" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
+            <a href="{{ route('editorial.index')}}" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
           </div>
         </div>
       </div>
@@ -65,11 +70,11 @@
   
           <div class="inner text-center">
   
-            <h3>26</h3>
+            <h3>{{count($generos)}}</h3>
   
             <p>Generos</p>
             <hr>
-            <a href="index.php?directorio=producto&pagina=index.php" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
+            <a href="{{ route('genero.index')}}" class="text-white info">Mas info <small><i class="fas fa-arrow-circle-right"></i></small></a>
           </div>
         </div>
       </div>

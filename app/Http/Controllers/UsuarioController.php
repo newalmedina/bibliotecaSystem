@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,9 +46,9 @@ class UsuarioController extends Controller
         $this->validate($request, [
             "nombre" => "required|max:50|min:3",
             "apellidos" => "required|max:100|min:5",
-            "identificacion" => "required|size:9|unique:usuarios,identificacion",
+            "identificacion" => "required|size:9|unique:users,identificacion",
             "telefono" => "required|size:9",
-            "correo" => "required|email|max:100|unique:usuarios,correo",
+            "correo" => "required|email|max:100|unique:users,correo",
             "fecha_nacimiento" => "required|max:50|date",
             "password" => "required|max:18|min:6",
             "privilegio_id" => "required|exists:privilegios,id",

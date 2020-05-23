@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Configuration;
 
 class LoginController extends Controller
 {
+
     public function showLoginForm()
     {
         return view("login.login");
@@ -26,6 +28,7 @@ class LoginController extends Controller
             ->withErrors([$this->username()  => trans("auth.failed")])
             ->withInput(request([$this->username()]));
     }
+
     public function logout()
     {
         Auth::logout();

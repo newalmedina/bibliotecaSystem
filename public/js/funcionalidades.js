@@ -96,8 +96,6 @@ function validarImagen2(obj) {
 }
 
 
-
-
 function Validar(idcampo, campoError, validador, tabladb) {
     var campo1 = $(idcampo);
     var parametros = {
@@ -125,3 +123,15 @@ function Validar(idcampo, campoError, validador, tabladb) {
     });
 
 }
+
+//datatable y select 2
+$(document).ready(function () {
+    $('.select2').select2();
+
+    $('#dataTable').DataTable();
+    $('#dtPrestamo').DataTable({
+        "order": [[0, "desc"]]
+    });
+
+
+});

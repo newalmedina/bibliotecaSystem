@@ -22,8 +22,8 @@
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
-                        @if($errors->has('email'))
-                        <div class="text-danger font-italic">{{ $errors->first('email') }}</div>
+                        @if($errors->has('correo'))
+                        <div class="text-danger font-italic">{{ $errors->first('correo') }}</div>
                         @endif
                     </div>
                       

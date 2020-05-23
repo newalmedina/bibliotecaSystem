@@ -18,7 +18,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
-
+    public function privilegio()
+    {
+        return $this->belongsTo('App\Privilegio', 'privilegio_id', 'id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

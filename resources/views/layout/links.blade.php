@@ -20,6 +20,8 @@
 <!--MORRIS CHARTS-->
 <link rel="stylesheet" href="{{asset('plugins/morris js/morris.css')}}">
 
-<!--DROPZONE-->
+<!--DROPZONE NO ACTIVO-->
 <link rel="stylesheet" href="{{asset('plugins/dropzone/dist/dropzone.css')}}">
 
+<!--ESTILOS GENERALES-->
+<link rel="stylesheet" href="{{asset('css/estilos.css')}}">

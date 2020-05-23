@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      *
@@ -86,7 +90,6 @@ class ClienteController extends Controller
                 "cliente_id" => $ultimo_id->id,
             ]);
             $imagen2->move("clienteImagenes", $nombre);
-
         } else {
             $imagen = $request->file('imagen');
             $nombre = $imagen->getClientOriginalName();
@@ -199,7 +202,6 @@ class ClienteController extends Controller
                 "cliente_id" => $id,
             ]);
             $imagen2->move("clienteImagenes", $nombre);
-
         } else if ($request["tipo_documentacion"] == "pasaporte" && $request->hasFile('imagen')) {
             //Eliminando imagenes anteriores
             if (count($cliente->documentacionFotos)) {
@@ -221,7 +223,6 @@ class ClienteController extends Controller
                 "cliente_id" => $id,
             ]);
             $imagen->move("clienteImagenes", $nombre);
-
         }
         return redirect()->route("cliente.index")->with("success", "Actualizado")
             ->with("mensaje", "Registro Actualizado correctamente");

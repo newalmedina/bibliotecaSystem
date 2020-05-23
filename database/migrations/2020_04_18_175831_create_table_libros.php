@@ -21,6 +21,8 @@ class CreateTableLibros extends Migration
             $table->date('fecha_publicacion');
             $table->boolean('estatus')->default(1);
             $table->text('portada')->nullable($value = true);
+            $table->integer('stock');
+            $table->integer('alquilados')->nullable($value = true)->default(0);
             $table->bigInteger('autor_id')->unsigned();
             $table->foreign('autor_id')
                 ->references('id')

@@ -12,10 +12,14 @@
       <li class="dropdown user user-menu">
  
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="{{asset('img/noimage.jpg')}}" alt="photo" class="user-image">
- 
- 
-          <span class="hidden-xs ">nombre user</span>
+          @if (auth()->user()->foto!="")
+            <img src="{{asset(auth()->user()->foto)}}" alt="photo" class="user-image">
+          @else
+            <img src="{{asset('img/noimage.jpg')}}" alt="photo" class="user-image">
+          @endif
+        
+         
+          <span class="hidden-xs ">{{auth()->user()->nombre}} {{auth()->user()->apellidos}}</span>
  
         </a>
  
@@ -26,8 +30,10 @@
           <li class="user-body">
  
             <div class="pull-right">
- 
-              <a href="modulos/login/crud.php?salir=salir" class="btn btn-default btn-flat">Salir</a>
+              <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button class="btn btn-danger"> cerrar session</button>
+             </form>
  
             </div>
  

@@ -8,7 +8,7 @@ class Libro extends Model
 {
     protected $fillable = [
         "nombre", "sinopsis", "isbn", "fecha_publicacion", "estatus",
-        "portada", "autor_id", "editorial_id", "genero_id"
+        "portada", "autor_id", "editorial_id", "genero_id", "stock", "alquilados"
     ];
     public function genero()
     {

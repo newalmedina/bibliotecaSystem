@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Hash;
 
 class LibroController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,8 +57,11 @@ class LibroController extends Controller
             "portada" => "image",
             "autor_id" => "required|exists:autores,id",
             "editorial_id" => "required|exists:editoriales,id",
-            "genero_id" => "required|exists:generos,id"
+            "genero_id" => "required|exists:generos,id",
+            "stock" => "required"
         ]);
+
+        $stock = $request["stock"];
 
         Libro::create($request->all());
         //guardando foto

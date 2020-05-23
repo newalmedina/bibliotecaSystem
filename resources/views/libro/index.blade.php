@@ -36,6 +36,8 @@
                     <th>NOMBRE</th>
                     <th>ISB</th>
                     <th>FECHA PUBLICACION</th>                   
+                    <th width="15">Stock</th>                   
+                    <th width="15">Disponible</th>                   
                     <th>ESTATUS</th>
                     <th width="">ACCIONES</th>
                 </tr>
@@ -55,6 +57,12 @@
                     <td>{{$libro->nombre}}</td>
                     <td>{{$libro->isbn}}</td>
                     <td>{{$libro->fecha_publicacion}}</td>
+                    <td class="text-center">{{$libro->stock}}</td>                    
+                    @if($libro->stock - $libro->alquilados > 0)
+                      <td class='text-success text-center font-weight-bolder'>{{$libro->stock - $libro->alquilados}}</td>
+                    @else
+                    <td class='text-danger text-center font-weight-bolder'>{{$libro->stock - $libro->alquilados}}</td>
+                    @endif
                     @if($libro->estatus == 1)
                     <td class='bg-success text-center '>Activo</td>
                     @else
@@ -69,7 +77,10 @@
                     </td>
 
                 </tr>
+            
                 @endforeach
+                
+                
                 @else
                 <tr>
                     <td colspan="9" class="text-center"> No hay registros disponibles</td>

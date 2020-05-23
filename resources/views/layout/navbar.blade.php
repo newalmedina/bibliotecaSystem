@@ -1,11 +1,24 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary  elevation-4">
+<aside class="main-sidebar sidebar-dark-info  elevation-4">
     <!-- Brand Logo -->
-    <a href="" class="brand-link">
-      <img src="{{asset('img/library logo.png')}}" alt="logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Lybrary System</span>
+    <a href="{{ route('inicio')}}" class="brand-link">
+      @php
+        $config = \App\Configuration::
+        select('foto','nombre_biblioteca')
+        ->orderBy("id", "desc")
+        ->first();
+      @endphp
+      
+      @if ($config->foto=="")
+        <img src="{{asset('img/library logo.png')}}" alt="logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Lybrary System</span>
+      @else
+      <img  src="{{asset($config->foto)}}" alt="logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <br><span class="brand-text font-weight-light">{{$config->nombre_biblioteca}}</span>
+      @endif
+     
     </a>
-  
+    
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -75,19 +88,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="index.php?directorio=venta&pagina=index.php" class="nav-link ">
+                <a href="{{route('prestamo.index')}}"    class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Prestamo</p>
+                  <p>Historial de prestamos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="index.php?directorio=venta&pagina=add.php" class="nav-link">
+                <a href="{{route('prestamo.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Renavacion</p>
+                  <p>Nuevo prestamo</p>
                 </a>
               </li>
               <li id="rep_venta_permisos" class="nav-item">
-                <a href="index.php?directorio=venta&pagina=reporte.php" class="nav-link">
+                <a href="{{route('devolucion.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Devolucion</p>
                 </a>
