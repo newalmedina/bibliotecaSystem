@@ -1,3 +1,6 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
@@ -32,4 +35,8 @@
 <script src="{{asset('plugins/sweetalert/sweetalert.js')}}"></script>
 <!-- Funcionalidades Propias -->
 <script src="{{asset('js/funcionalidades.js')}}"></script>
+<!-- chart js -->
+<script src="{{asset('plugins/chart.js/Chart.bundle.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+2

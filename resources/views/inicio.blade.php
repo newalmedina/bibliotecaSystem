@@ -82,7 +82,7 @@
     <div class="row">
         <div id="" class=" col-md-12 card card-info bg-info pt-1">
   
-        <h3 class="card-title  text-white"> <i class="fas fa-th mr-2"></i>Grafico de Ventas</h3>
+        <h3 class="card-title  text-white"> <i class="fas fa-th mr-2"></i>Grafico de prestamos</h3>
   
         <div id="myfirstchart" class="text-center" style="height: 250px; width:100%;"></div>
   
@@ -91,11 +91,11 @@
         <!-- Input addon -->
         <div class="card card-info  border-top border-secondary ">
           <div class="card-header">
-            <h3 class="card-title">Productos mas vendidos</h3>
+            <h3 class="card-title">Libros mas prestados</h3>
           </div>
           <div class="card-body">
             <div>
-              <canvas id="donutChart" style="height:200px; min-height:230px"></canvas>
+              <canvas id="myChart"  style="height:200px; min-height:230px"></canvas>
             </div>
   
           </div>
@@ -107,17 +107,105 @@
         <!-- Input addon -->
         <div class=" card card-info border-top border-primary">
           <div class="card-header">
-            <h3 class="card-title">Productos Recientes</h3>
+            <h3 class="card-title">Libros recientes</h3>
           </div>
           <div class="card-body">
-            <table class="table">
-                 //grafica productos recientes
-            </table>
+            <table class="table  table-bordered table-striped">
+             
+              <tbody >
+                  @foreach($ultimosLibros as $libro)
+                  <tr>
+                    @if($libro->portada !="")
+                    <td width="80" class="text-center"><img class="img-fluid rounded-circle text-center"  src="{{asset($libro->portada)}}" style="width: 40px; height:40px;" alt=""></td>
+                    @else 
+                    <td width="80" class="text-center"><img class="img-fluid rounded-circle"  src="{{asset('img/nobook.png')}}" style="width: 40px; height:40px;" alt=""></td>
+                    @endif  
+                    <td>{{$libro->nombre}}</td>                      
+                    <td>{{$libro->genero->descripcion}}</td>                      
+                  </tr>
+              
+                  @endforeach  
+              </tbody>
+          </table>
             <hr>
-            <div class="text-center"> <a href="index.php?directorio=producto&pagina=index.php">Ver Todos los productos</a></div>
+            <div class="text-center"> <a href="{{ route('libro.index')}}">Ver Todos los productos</a></div>
           </div>
           <!-- /.card-body -->
         </div>
       </div>
+     
+      @foreach ($prestamos as $prestamo)
+          {{$prestamo->cantidad}}
+      @endforeach
   </section>
+  <script>
+    //doughnut chart
+     var libros = {!! json_encode($librosMasVendidos) !!};
+    var datos=[];   
+    var labels=[];
+   
+    for (let i = 0; i < libros.length; i++) {
+      datos[i]=libros[i].cantidad;
+      labels[i]=libros[i].nombre;  
+    }
+
+    var ctx = document.getElementById('myChart');
+    var donutOptions = {
+      maintainAspectRatio: false,
+      responsive: true,
+      borderWidth: 1,
+      legend: {
+        display: true,
+        position: 'right',
+
+      }
+
+    }
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'doughnut',
+
+        // The data for our dataset
+        data: {
+            labels:labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: ["red", "green", "yellow", "aqua", "purple", "blue", "cyan", "magenta", "orange", "gold"],
+                data: datos
+            }]
+        },
+
+        // Configuration options go here
+        options: donutOptions
+    });
+
+    new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+    
+    @foreach ($prestamos as $prestamo)
+    @php 
+    echo " { y:'".$prestamo->fechaMes."', ventas:".$prestamo->cantidad."},";
+    @endphp
+   
+     @endforeach
+  ],
+     xkey: 'y',
+    ykeys: ['ventas'],
+    labels: ['ventas'],
+    lineColors: ['black'],
+    lineWidth: 2,
+    hideHover: 'auto',
+    gridTextColor: '#fff',
+    gridStrokeWidth: 0.4,
+    pointSize: 4,
+    pointStrokeColors: ['#efefef'],
+    gridLineColor: '#efefef',
+    gridTextFamily: 'Open Sans',
+    gridTextSize: 10
+});
+  </script>
 @endsection

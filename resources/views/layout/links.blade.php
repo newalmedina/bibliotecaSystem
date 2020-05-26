@@ -18,7 +18,7 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
 <!--MORRIS CHARTS-->
-<link rel="stylesheet" href="{{asset('plugins/morris js/morris.css')}}">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
 <!--DROPZONE NO ACTIVO-->
 <link rel="stylesheet" href="{{asset('plugins/dropzone/dist/dropzone.css')}}">
