@@ -20,10 +20,10 @@ class UsuarioSeeder extends Seeder
             "nombre" => "Admin", "apellidos" => "Admin",
             "identificacion" => "000000000",
             "telefono" => "000000000",
-            "correo" => "admin@correo.com",
+            "correo" => "nmedina@gmail.com",
             "estatus" => 1,
             "fecha_nacimiento" => "2020-04-03 17:16:39",
-            "password" =>  Hash::make("secret"),
+            "password" =>  Hash::make("Secret15"),
             "privilegio_id" => 1
 
         ]);

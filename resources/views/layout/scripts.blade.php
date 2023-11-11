@@ -38,5 +38,3 @@
 <!-- chart js -->
 <script src="{{asset('plugins/chart.js/Chart.bundle.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-2
