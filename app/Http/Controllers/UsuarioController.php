@@ -99,7 +99,7 @@ class UsuarioController extends Controller
         //$privilegios =  privilegio::all();
         $privilegios = Privilegio::where('id', '!=', $usuario->privilegio_id)->get();
 
-        return view("usuario.edit", compact("usuario", "privilegios", "privUsuario"));
+        return view("usuario.edit", compact("usuario", "privilegios",));
     }
 
     /**
