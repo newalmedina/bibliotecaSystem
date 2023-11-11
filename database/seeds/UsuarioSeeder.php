@@ -16,8 +16,6 @@ class UsuarioSeeder extends Seeder
     public function run()
     {
 
-
-        Usuario::truncate();
         Usuario::create([
             "nombre" => "Admin", "apellidos" => "Admin",
             "identificacion" => "000000000",
